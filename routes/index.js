@@ -4,18 +4,18 @@ var router = express.Router();
 // Initial user list to be added to with registration functionality.
 const userList = [
   {
-    userId: uuid,
+    userId: uuid(),
     email: "johnsmith@gmail.com",
     password: "john",
-    currentOrder: "", // Blank
-    orderHistory: {}, // Empty
+    currentOrder: [], // Empty
+    orderHistory: [], // Empty
   },
   {
-    userId: uuid,
+    userId: uuid(),
     email: "sallysmith@gmail.com",
     password: "sally",
-    currentOrder: "", // Blank
-    orderHistory: {}, // Empty
+    currentOrder: [], // Empty
+    orderHistory: [], // Empty
   },
 ];
 
@@ -26,18 +26,17 @@ router.get("/", function (req, res, next) {
 
 router.post("/registration", (req, res, next) => {
   try {
-    const userId = req.body.uuid;
+    // from input fields
     const email = req.body.email;
     const password = req.body.password;
-    const currentOrder = req.body.currentOrder;
-    const orderHistory = req.body.orderHistory;
 
+    // Create new user with input from registration page user input fields.
     const newUser = {
-      userId: uuid,
+      userId: uuid(),
       email: email,
       password: password,
-      currentOrder: currentOrder,
-      orderHistory: orderHistory,
+      currentCart: [],
+      orderHistory: [],
     };
 
     userList.push(newUser);
