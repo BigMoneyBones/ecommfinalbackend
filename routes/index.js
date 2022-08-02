@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 
+const { uuid } = require("uuidv4");
+
 // Initial user list to be added to with registration functionality.
 const userList = [
   {
