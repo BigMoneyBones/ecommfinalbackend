@@ -20,10 +20,27 @@ const userList = [
 ];
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
+router.get("/", (req, res, next) => {
   res.render("index", { title: "Express" });
 });
 
+/* Get user list IF logged in user is an admin. */
+router.get("/admin", (req, res, next) => {
+  try {
+    // if the user is an admin, generate the userList
+    if (isAdmin === true) {
+      res.status(200).json(userList);
+    }
+  } catch (error) {
+    // if the user is not an admin, display error message.
+    res.status(500).json({
+      message: "Error, user does not have admin privileges" + error,
+      success: false,
+    });
+  }
+});
+
+/*  */
 router.post("/registration", (req, res, next) => {
   try {
     // from input fields
