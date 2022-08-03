@@ -1,0 +1,244 @@
+{
+  "products": [
+    {
+      "productId": 1,
+      "title": "Pink Geode Vanilla Cake",
+      "price": 100.0,
+      "image": "https://photos.app.goo.gl/QBacaG7ZFk7kjzPW9",
+      "description": "Geode rock vanilla cake with pink buttercream frosting and a strip of rock candy.",
+      "category": "Cake"
+    },
+    {
+      "productId": 2,
+      "title": "Rainbow Two-Tier Cake",
+      "price": 75.0,
+      "image": "https://photos.app.goo.gl/obEHNdSttd7raQFc7",
+      "description": "Six colorful layers of vanilla cake covered in buttercream and sprinkles.",
+      "category": "Cake"
+    },
+    {
+      "productId": 3,
+      "title": "Buffalo Cake",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/9ebKoqNMGkffwzPg7",
+      "description": "A chocolate cake with chocolate cream cheese filling, buttercream frosting made to look like fur and fondant horns.",
+      "category": "Cake"
+    },
+    {
+      "productId": 4,
+      "title": "Birthday Cake",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/pzRyFLhWRQunRvhW9",
+      "description": "This cake starts with a four-layer golden butter vanilla cake with purple buttercream filling. It is iced in white buttercream frosting and decorated with purple buttercream dots and black jimmies, and “Happy Birthday” is printed on the top in sugar paper!",
+      "category": "Cake"
+    },
+    {
+      "productId": 5,
+      "title": "Red Velvet Heart Cake ",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/F4YL89piLi7JveEc7",
+      "description": "This is a delicious four-layer red velvet cake with vanilla cream cheese filling. It is then frosted with pink-tinted buttercream frosting and decorated with red fondant hearts!",
+      "category": "Cake"
+    },
+    {
+      "productId": 6,
+      "title": "Carrot Cake",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/XyhiWAUyECSBfk6E9",
+      "description": "Indulge in this delight made of moist carrot cake spiced with This Little Goat went to India and perfectly coated in rich cream cheese frosting!",
+      "category": "Cake"
+    },
+    {
+      "productId": 7,
+      "title": "Jiggly Japanese Cheesecake",
+      "price": 30.0,
+      "image": "https://photos.app.goo.gl/Z1Faqn5B4Vo7jwob8",
+      "description": "Japanese bouncy cheesecakes are light and silky in texture and melt in your mouth!",
+      "category": "Cake"
+    },
+    {
+      "productId": 8,
+      "title": "20 Layer Chocolate Peanut Butter Cake",
+      "price": 100.0,
+      "image": "https://photos.app.goo.gl/edFZWPdX1Q6m3k5V6",
+      "description": "Featuring layers of moist, chocolate devil’s food cake, sandwiched by peanut butter mascarpone, then finished with rich chocolate ganache and chocolate ribbons.",
+      "category": "Cake"
+    },
+    {
+      "productId": 9,
+      "title": "Levee High Caramel Pecan Apple Pie",
+      "price": 75.0,
+      "image": "https://photos.app.goo.gl/AGfVz2UxUhRZBZio8",
+      "description": "This pie in the sky features 18 Golden Delicious Apples, piled high in a made-from-scratch crust. To achieve their signature height, each apple is hand-peeled and hand-placed in the pie.",
+      "category": "Pie"
+    },
+    {
+      "productId": 10,
+      "title": "Cereal Killer Pie",
+      "price": 30.0,
+      "image": "https://photos.app.goo.gl/1z75Tusz7T3q2RDs5",
+      "description": "The Cereal Killer Pie has a cereal crust, and a filling made with a cream cheese base packed with Fruity Pebbles and then topped with Froot Loops.",
+      "category": "Pie"
+    },
+    {
+      "productId": 11,
+      "title": "Pie Holes",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/Cv3URyjz1xTUXxQNA",
+      "description": "These assorted Pie Holes are two-to-three bite-sized pies that contain pie filling inside and baked in a delicious butter crust before being topped with a specialty glaze. This assortment contains four flavors: Nutella, Strawberry, Blueberry, and Apple! 24pk",
+      "category": "Pie"
+    },
+    {
+      "productId": 12,
+      "title": "Hand Pies",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/nWXLjwnJ1Ss59CN99",
+      "description": "10 assorted flaky hand pies with a buttery crumble topping. Assortment includes: 2 Apple Crumble, 2 Brown Sugar Cinnamon, 2 Blueberry Crumble, 2 Strawberry and 2 Chocolate Marshmallow.",
+      "category": "Pie"
+    },
+    {
+      "productId": 13,
+      "title": "Strawberry Lemon Piecaken",
+      "price": 100.0,
+      "image": "https://photos.app.goo.gl/U7uoEJiBAFjZ7efy6",
+      "description": "Luscious lemon cake and strawberry swirl cheesecake are layered together with zesty lemon frosting and topped with… wait for it… a full strawberry-rhubarb pie! It’s the perfect warm weather treat!",
+      "category": "Pie"
+    },
+    {
+      "productId": 14,
+      "title": "OG Boston Cream Pie",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/QBBxfm42PAjeHiwBA",
+      "description": "Chocolate topped golden cake filled with pastry cream.",
+      "category": "Pie"
+    },
+    {
+      "productId": 15,
+      "title": "Boozy Cupcake Dozen",
+      "price": 75.0,
+      "image": "https://photos.app.goo.gl/YfpXygyU6LSQB62n9",
+      "description": "Like a little kick to your cupcake? Choose from beer, wine or liquor flavored cupcakes! Please note that cupcakes are baked with alcohol.",
+      "category": "Booze Infused"
+    },
+    {
+      "productId": 16,
+      "title": "Coquito Cupcake Jars",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/HkoE4Hni9JeqX2xF9",
+      "description": "Starts with Bacardi Coquito, a Puerto Rican eggnog made with coconut milk, rum, cinnamon, cloves, and nutmeg, then inject it into a coconut cupcake, layered in a jar with whipped mascarpone cream cheese frosting. It’s like Christmas on the beach, in jarred form! 6pk",
+      "category": "Booze Infused"
+    },
+    {
+      "productId": 17,
+      "title": "Mini Rum Bundt Cakes",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/GtgDvYDZEwsBTDi38",
+      "description": "These mini rum bundt cakes bring your summer vacation to life with your favorite summer cocktails (minus the mini umbrellas) in cake form: Strawberry Daiquiri, Piña Colada, and Island Rum.",
+      "category": "Booze Infused"
+    },
+    {
+      "productId": 18,
+      "title": "Boozy Jelly Cake",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/pVhdBzm3NuwsmzVz5",
+      "description": "The Boozy Cake is made with pineapple, rum, orange, Campari, and lime. It contains five percent alcohol.",
+      "category": "Booze Infused"
+    },
+    {
+      "productId": 19,
+      "title": "Boozy Blondie Bourbon Caramel Cheesecake",
+      "price": 75.0,
+      "image": "https://photos.app.goo.gl/HGRd5ssei1xv9Wqb9",
+      "description": "Ooey, gooey, and chewy, this five pound(!) cheesecake is dripping from top to bottom with our signature Bourbon Caramel Sauce, and is unapologetically delicious! Classic cheesecake (made with homemade buttermilk cream cheese) is layered between two thick browned butter butterscotch blondies injected with caramel sauce, and topped off with even MORE caramel sauce!",
+      "category": "Booze Infused"
+    },
+    {
+      "productId": 20,
+      "title": "Big Daddy Giant Cookie Pack",
+      "price": 40.0,
+      "image": "https://photos.app.goo.gl/1YdgW8RL9yGyezqp9",
+      "description": "This giant cookie pack comes with four delicious flavors: Chocolate Chip Caramel Pretzel, Graham Chocolate Chip, Peanut Butter Oreo Bonanza and Nutella Surprise",
+      "category": "Cookies"
+    },
+    {
+      "productId": 21,
+      "title": "Hot Lips Sugar Cookies",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/Ex59joT2R44JXdQMA",
+      "description": "Who says the only lips you need to enjoy this Valentines Day are your lovers? Kiss and eat away at the tastiest lips ever baked. 10pk.",
+      "category": "Cookies"
+    },
+    {
+      "productId": 22,
+      "title": "Dozen Chocolate Chip Cookies",
+      "price": 30.0,
+      "image": "https://photos.app.goo.gl/Y3j5C7r2pkNETYCD6",
+      "description": "Using a generous amount of milk chocolate chips folded into a rich, delicious cookie batter, these ain’t your mama’s chocolate chip cookies.",
+      "category": "Cookies"
+    },
+    {
+      "productId": 23,
+      "title": "Rainbow Cookies",
+      "price": 50.0,
+      "image": "https://photos.app.goo.gl/igYrHX7eDChyjRxT6",
+      "description": "These bite-sized rainbows are unmissable with neon almond cake, eye-catching chocolate drip, and a topping of glitter. This 20 pack offers a magical treat for everyone with an assortment of raspberry, apricot, and chocolate hazelnut fillings.",
+      "category": "Cookies"
+    },
+    {
+      "productId": 24,
+      "title": "Stuffed Cookies",
+      "price": 40.0,
+      "image": "https://photos.app.goo.gl/EAx9haxthZjoDAmp6",
+      "description": "Cookie Butter Stuffed Cookies: We take a HUGE scoop of Cookie butter and stuff that into a chocolate cookie filled with chocolate chips and Reese’s peanut butter chips. 6pk.",
+      "category": "Cookies"
+    },
+    {
+      "productId": 25,
+      "title": "Creme Brulee Bars",
+      "price": 20.0,
+      "image": "https://photos.app.goo.gl/oTfyqHz75MBrxeJfA",
+      "description": "A unique take on the classic French, self-indulgent dessert, Crème Brûlée. This treat is a sweet and crunchy cookie-bar, topped with a browned butter salted caramel drizzle. Two 10mg THC bars are packaged together in one pouch.",
+      "category": "Edibles (21+)"
+    },
+    {
+      "productId": 26,
+      "title": "Turtle Brownies",
+      "price": 20.0,
+      "image": "https://photos.app.goo.gl/fCW3pYw6kaEdDaq98",
+      "description": "These all-natural Turtle Brownies are chocolaty, melt-in-your-mouth brownies drizzled with homemade caramel sauce and crunchy pecan pieces. Each piece is infused with solventless cannabutter for that classic long-lasting high and available in hybrid, indica, and sativa.",
+      "category": "Edibles (21+)"
+    },
+    {
+      "productId": 27,
+      "title": "S'mores Brownies",
+      "price": 20.0,
+      "image": "https://photos.app.goo.gl/SDXcjuDmpYudh7Mi8",
+      "description": "No time for campfire s’mores, no problem! We’ve done all the work and added graham cracker crumble and mini toasted marshmallows to the tops of our chocolatey brownies. Now every season is s’mores season. Oh, and we went ahead and infused each of them with 10mg of natural cannabutter for that classic long-lasting high. ",
+      "category": "Edibles (21+)"
+    },
+    {
+      "productId": 28,
+      "title": "Peanut Butter Brownies",
+      "price": 20.0,
+      "image": "https://photos.app.goo.gl/C8urRuTGc2pQzpqUA",
+      "description": "Chocolatey, wheat-free brownies with peanut butter chips mixed throughout. So delicious you won’t know they are wheat-free! Made with wheat-free flour and infused with 10mg of solventless, natural, hybrid cannabutter for that classic long-lasting high.",
+      "category": "Edibles (21+)"
+    },
+    {
+      "productId": 29,
+      "title": "Chocolate Chip Cookies",
+      "price": 20.0,
+      "image": "https://photos.app.goo.gl/X1H5NjdyVwVKQwQ56",
+      "description": "Simple, sweet with just the right amount of chocolate chips. Our classic chocolate chip cookies are made from scratch and infused with 10mg of natural cannabutter for that classic long-lasting high.",
+      "category": "Edibles (21+)"
+    },
+    {
+      "productId": 30,
+      "title": "Red Velvet Cookies",
+      "price": 20.0,
+      "image": "https://photos.app.goo.gl/192XXH1NAyKFUx9TA",
+      "description": "A mysteriously chocolatey cookie with flavor balancing white chocolate chips offers a more unique cookie profile. Infused with cannabutter.",
+      "category": "Edibles (21+)"
+    }
+  ]
+}
