@@ -11,26 +11,8 @@ const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
 dotenv.config();
 
-// Initial user list to be added to with registration functionality.
-const userList = [
-  {
-    userId: uuid(),
-    email: "johnsmith@gmail.com",
-    password: "john",
-    currentOrder: [], // Empty
-    orderHistory: [], // Empty
-  },
-  {
-    userId: uuid(),
-    email: "sallysmith@gmail.com",
-    password: "sally",
-    currentOrder: [], // Empty
-    orderHistory: [], // Empty
-  },
-];
-
 // implement the user creation route using the bcrypt salt/hash functions to take our new users password and encrypt it before saving it to the database.
-const createUser = async (username, passwordHash) => {
+const createUser = async (email, passwordHash) => {
   // Note: You do not have to create the users collection in mongodb before saving to it. Mongo will automatically create the users collection upon insert of a new document.
   const collection = await bakeryDB().collection("users");
 
@@ -38,7 +20,7 @@ const createUser = async (username, passwordHash) => {
   const newUser = {
     userId: uuid(), // uid stands for User ID. This will be a unique string that we can use to identify our user.
     email: email,
-    password: password,
+    password: passwordHash,
     currentCart: [],
     orderHistory: [],
   };
@@ -65,9 +47,8 @@ router.post("/registration", async (req, res, next) => {
     const salt = await bcrypt.genSalt(saltRounds);
     const hash = await bcrypt.hash(password, salt);
     const userSaveSuccess = await createUser(email, hash);
-    console.log(userSaveSuccess);
 
-    userList.push(newUser);
+    console.log(userSaveSuccess);
 
     res
       .status(200)
@@ -80,19 +61,23 @@ router.post("/registration", async (req, res, next) => {
 });
 
 router.post("/login", async (req, res, next) => {
-  const username = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
   const collection = await bakeryDB().collection("users");
+
   try {
     const user = await collection.findOne({
-      username: username,
+      email: email,
     });
+
     if (!user) {
       res.json({ success: false }).status(204);
     }
+
     const match = await bcrypt.compare(password, user.password);
     if (match) {
       const jwtSecretKey = process.env.JWT_SECRET_KEY;
+
       const data = {
         time: new Date(),
         userId: user.uid, // Note: Double check this line of code to be sure that user.uid is coming from your fetched mongo user
