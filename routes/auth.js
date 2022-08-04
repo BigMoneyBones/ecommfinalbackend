@@ -37,6 +37,19 @@ const createUser = async (email, passwordHash) => {
   }
 };
 
+router.post("/products", async (req, res, next) => {
+  const collection = await bakeryDB().collection("products");
+  try {
+    const products = await collection;
+    res.json({ success: true, products }).status(200);
+    return;
+  } catch (error) {
+    res
+      .json({ message: "Error rendering products page.", success: false })
+      .status(500);
+  }
+});
+
 router.post("/registration", async (req, res, next) => {
   try {
     // from input fields
