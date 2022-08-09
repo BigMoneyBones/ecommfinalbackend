@@ -11,9 +11,15 @@ const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
 dotenv.config();
 
-// implement the user creation route using the bcrypt salt/hash functions to take our new users password and encrypt it before saving it to the database.
+/* 
+* @param email {string}
+* @param passwordHash {string}: encrypted password using bcrypt salt/hash
+* @description: implement the user creation route using the bcrypt salt/hash functions to take our new users password and encrypt it before saving it to the database.
+* @info: You do not have to create the users collection in mongodb before saving to it. Mongo will automatically create the users collection upon insert of a new document.
+*
+*/
 const createUser = async (email, passwordHash) => {
-  // Note: You do not have to create the users collection in mongodb before saving to it. Mongo will automatically create the users collection upon insert of a new document.
+
   const collection = await bakeryDB().collection("users");
 
   // Create new user with input from registration page user input fields.
