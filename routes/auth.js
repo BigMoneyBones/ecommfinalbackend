@@ -23,6 +23,7 @@ const createUser = async (email, passwordHash) => {
     password: passwordHash,
     currentCart: [],
     orderHistory: [],
+    wishList: [],
   };
 
   console.log("mongo response " + collection);
@@ -63,9 +64,10 @@ router.post("/registration", async (req, res, next) => {
 
     console.log(userSaveSuccess);
 
-    res
-      .status(200)
-      .json({ message: "New user added successfully", success: true });
+    res.status(200).json({
+      message: "New user added successfully",
+      success: userSaveSuccess,
+    });
   } catch (error) {
     res
       .status(500)
@@ -74,71 +76,97 @@ router.post("/registration", async (req, res, next) => {
 });
 
 router.post("/login", async (req, res, next) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  const collection = await bakeryDB().collection("users");
-
   try {
+    const email = req.body.email;
+    const password = req.body.password;
+    const collection = await bakeryDB().collection("users");
     const user = await collection.findOne({
       email: email,
     });
 
     if (!user) {
       res.json({ success: false }).status(204);
+      return;
     }
 
     const match = await bcrypt.compare(password, user.password);
-    if (match) {
-      const jwtSecretKey = process.env.JWT_SECRET_KEY;
-
-      const data = {
-        time: new Date(),
-        userId: user.uid, // Note: Double check this line of code to be sure that user.uid is coming from your fetched mongo user
-      };
-
-      const token = jwt.sign(data, jwtSecretKey);
-      res.json({ success: true, token }).status(200);
+    if (!match) {
+      res
+        .json({ success: false, message: "Password was incorrect." })
+        .status(204);
       return;
     }
-    res.json({ success: false });
+
+    const jwtSecretKey = process.env.JWT_SECRET_KEY;
+    const expiration = Math.floor(Date.now() / 1000) + 60 * 60;
+    const userType = email.includes("codeimmersives.com") ? "admin" : "user";
+
+    const data = {
+      time: new Date(),
+      userId: user.uid, // Note: Double check this line of code to be sure that user.uid is coming from your fetched mongo user
+      scope: userType,
+    };
+    const token = jwt.sign({ data, exp: expiration }, jwtSecretKey);
+
+    res.json({ success: true, token, userType }).status(200);
+    return;
   } catch (error) {
     res.json({ message: "Error Logging In.", success: false }).status(500);
   }
 });
 
-/* Get user list IF logged in user is an admin. */
-router.get("/admin", (req, res, next) => {
-  try {
-    // if the user is an admin, generate the userList
-    if (isAdmin === true) {
-      res.status(200).json(userList);
-    }
-  } catch (error) {
-    // if the user is not an admin, display error message.
-    res.status(500).json({
-      message: "Error, user does not have admin privileges" + error,
-      success: false,
-    });
-  }
-});
+// router.get("/hello-auth", (req, res) => {
+//   res.json({ message: "Hello from auth" });
+// });
 
-router.get("/validate-token", async (req, res, next) => {
-  const tokenHeaderKey = process.env.TOKEN_HEADER_KEY;
-  const jwtSecretKey = process.env.JWT_SECRET_KEY;
+// router.get("/validate-token", async (req, res, next) => {
+//   const tokenHeaderKey = process.env.TOKEN_HEADER_KEY;
+//   const jwtSecretKey = process.env.JWT_SECRET_KEY;
 
+//   try {
+//     const token = req.header(tokenHeaderKey);
+//     const verified = jwt.verify(token, jwtSecretKey);
+
+//     if (verified) {
+//       return res.json({ success: true });
+//     } else {
+//       // Access Denied
+//       throw Error("Access Denied");
+//     }
+//   } catch (error) {
+//     // Access Denied
+//     return res.status(401).json({ success: error, message: String(error) });
+//   }
+// });
+
+router.get("/validate-admin", (req, res) => {
   try {
+    const tokenHeaderKey = process.env.TOKEN_HEADER_KEY;
+    const jwtSecretKey = process.env.JWT_SECRET_KEY;
     const token = req.header(tokenHeaderKey);
     const verified = jwt.verify(token, jwtSecretKey);
 
-    if (verified) {
-      return res.json({ success: true });
-    } else {
-      // Access Denied
-      throw Error("Access Denied");
+    if (!verified) {
+      return res.json({ success: false, isAdmin: false });
     }
+
+    const userData = verified.data;
+
+    if (userData && userData.scope === "admin") {
+      return res.json({
+        success: true,
+        isAdmin: true,
+      });
+    }
+
+    if (userData && userData.scope === "user") {
+      return res.json({ success: true, isAdmin: false });
+    }
+
+    throw Error("Access Denied");
   } catch (error) {
     // Access Denied
-    return res.status(401).json({ success: error, message: String(error) });
+    return res.status(401).json({ success: false, message: error });
   }
 });
 
