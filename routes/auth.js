@@ -15,12 +15,14 @@ dotenv.config();
 const createUser = async (email, passwordHash) => {
   // Note: You do not have to create the users collection in mongodb before saving to it. Mongo will automatically create the users collection upon insert of a new document.
   const collection = await bakeryDB().collection("users");
+  const userType = email.includes("codeimmersives.com") ? "admin" : "user";
 
   // Create new user with input from registration page user input fields.
   const newUser = {
     userId: uuid(), // uid stands for User ID. This will be a unique string that we can use to identify our user.
     email: email,
     password: passwordHash,
+    userType: userType,
     currentCart: [],
     orderHistory: [],
     wishList: [],
@@ -71,7 +73,7 @@ router.post("/registration", async (req, res, next) => {
   } catch (error) {
     res
       .status(500)
-      .json({ message: "Error adding new user" + error, success: false });
+      .json({ message: "Error adding new user " + error, success: false });
   }
 });
 
@@ -108,16 +110,12 @@ router.post("/login", async (req, res, next) => {
     };
     const token = jwt.sign({ data, exp: expiration }, jwtSecretKey);
 
-    res.json({ success: true, token, userType }).status(200);
+    res.json({ success: true, token }).status(200);
     return;
   } catch (error) {
     res.json({ message: "Error Logging In.", success: false }).status(500);
   }
 });
-
-// router.get("/hello-auth", (req, res) => {
-//   res.json({ message: "Hello from auth" });
-// });
 
 // router.get("/validate-token", async (req, res, next) => {
 //   const tokenHeaderKey = process.env.TOKEN_HEADER_KEY;
