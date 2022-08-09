@@ -19,7 +19,7 @@ dotenv.config();
 *
 */
 const createUser = async (email, passwordHash) => {
-
+  // Note: You do not have to create the users collection in mongodb before saving to it. Mongo will automatically create the users collection upon insert of a new document.
   const collection = await bakeryDB().collection("users");
 
   // Create new user with input from registration page user input fields.
