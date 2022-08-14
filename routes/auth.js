@@ -11,13 +11,13 @@ const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
 dotenv.config();
 
-/* 
-* @param email {string}
-* @param passwordHash {string}: encrypted password using bcrypt salt/hash
-* @description: implement the user creation route using the bcrypt salt/hash functions to take our new users password and encrypt it before saving it to the database.
-* @info: You do not have to create the users collection in mongodb before saving to it. Mongo will automatically create the users collection upon insert of a new document.
-*
-*/
+/*
+ * @param email {string}
+ * @param passwordHash {string}: encrypted password using bcrypt salt/hash
+ * @description: implement the user creation route using the bcrypt salt/hash functions to take our new users password and encrypt it before saving it to the database.
+ * @info: You do not have to create the users collection in mongodb before saving to it. Mongo will automatically create the users collection upon insert of a new document.
+ *
+ */
 const createUser = async (email, passwordHash) => {
   // Note: You do not have to create the users collection in mongodb before saving to it. Mongo will automatically create the users collection upon insert of a new document.
   const collection = await bakeryDB().collection("users");
@@ -46,6 +46,16 @@ const createUser = async (email, passwordHash) => {
   }
 };
 
+// Route to display logged in users information: orderhistory, wishlist
+// router.post("/profile", async (req, res, next) => {
+//   try {
+//     res.json({ success: true }).status(200);
+//   } catch (error) {
+//     res.json({ message: "Error", success: false }).status(500);
+//   }
+// });
+
+// Route to display product page
 router.post("/products", async (req, res, next) => {
   const collection = await bakeryDB().collection("products");
   try {
@@ -59,6 +69,7 @@ router.post("/products", async (req, res, next) => {
   }
 });
 
+// Route to registration page: create new admin or user
 router.post("/registration", async (req, res, next) => {
   try {
     // from input fields
@@ -83,6 +94,7 @@ router.post("/registration", async (req, res, next) => {
   }
 });
 
+// Route to login page
 router.post("/login", async (req, res, next) => {
   try {
     const email = req.body.email;
@@ -107,7 +119,7 @@ router.post("/login", async (req, res, next) => {
 
     const jwtSecretKey = process.env.JWT_SECRET_KEY;
     const expiration = Math.floor(Date.now() / 1000) + 60 * 60;
-    const userType = email.includes("codeimmersives.com") ? "admin" : "user";
+    const userType = user.userType;
 
     const data = {
       time: new Date(),
@@ -116,7 +128,7 @@ router.post("/login", async (req, res, next) => {
     };
     const token = jwt.sign({ data, exp: expiration }, jwtSecretKey);
 
-    res.json({ success: true, token }).status(200);
+    res.json({ success: true, token, scope: userType }).status(200);
     return;
   } catch (error) {
     res.json({ message: "Error Logging In.", success: false }).status(500);
@@ -143,6 +155,7 @@ router.post("/login", async (req, res, next) => {
 //   }
 // });
 
+// Validation
 router.get("/validate-admin", (req, res) => {
   try {
     const tokenHeaderKey = process.env.TOKEN_HEADER_KEY;
