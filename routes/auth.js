@@ -46,15 +46,6 @@ const createUser = async (email, passwordHash) => {
   }
 };
 
-// Route to display logged in users information: orderhistory, wishlist
-// router.post("/profile", async (req, res, next) => {
-//   try {
-//     res.json({ success: true }).status(200);
-//   } catch (error) {
-//     res.json({ message: "Error", success: false }).status(500);
-//   }
-// });
-
 // Route to display product page
 router.post("/products", async (req, res, next) => {
   const collection = await bakeryDB().collection("products");
