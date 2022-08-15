@@ -20,6 +20,7 @@ mongoConnect();
 
 //enable cors
 const cors = require("cors");
+const { profile } = require("console");
 app.use(cors());
 app.options("*", cors());
 
