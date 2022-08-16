@@ -16,10 +16,14 @@ router.post("/checkout-cart", async (req, res, next) => {
     // 1. Get the user token from the headers
     const token = req.headers.token;
 
+    console.log("token ", token);
     // 2. Get the userId from the token by using JWT validate
     const verifiedToken = jwt.verify(token, jwtSecretKey);
     const userData = verifiedToken.data;
+    console.log("userData ", userData);
     const userId = userData.userId;
+
+    console.log("userId ", userId);
 
     // 3. Get the current user by userId from mongo
     const userCollection = await bakeryDB().collection("users");
@@ -28,11 +32,15 @@ router.post("/checkout-cart", async (req, res, next) => {
     // 4. Create a new orderId using uuid
     const orderId = uuid();
     const cart = req.body.cart;
+    const today = new Date()
 
     // 5. Create a new order object with the currentCart(from req.body.cart) and the orderId
     const newOrder = {
       orderId,
       productList: cart,
+      createdAt: today,
+      lastModified: today,
+      status: "open"
     };
 
     // 6. Insert the new order into the orders collection
@@ -43,11 +51,14 @@ router.post("/checkout-cart", async (req, res, next) => {
     // 8. Save user
     userCollection.updateOne(
       {
-        uid: userId,
+        userId: userId,
       },
       {
         $set: {
           currentOrderId: orderId,
+        },
+        $addToSet: {
+          orderHistory: orderId,
         },
       }
     );

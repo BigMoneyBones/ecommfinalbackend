@@ -114,12 +114,12 @@ router.post("/login", async (req, res, next) => {
 
     const data = {
       time: new Date(),
-      userId: user.uid, // Note: Double check this line of code to be sure that user.uid is coming from your fetched mongo user
+      userId: user.userId, // Note: Double check this line of code to be sure that user.uid is coming from your fetched mongo user
       scope: userType,
     };
     const token = jwt.sign({ data, exp: expiration }, jwtSecretKey);
 
-    res.json({ success: true, token, scope: userType }).status(200);
+    res.json({ success: true, token, scope: userType, email }).status(200);
     return;
   } catch (error) {
     res.json({ message: "Error Logging In.", success: false }).status(500);
@@ -174,6 +174,7 @@ router.get("/validate-admin", (req, res) => {
     throw Error("Access Denied");
   } catch (error) {
     // Access Denied
+    console.log(error)
     return res.status(401).json({ success: false, message: error });
   }
 });
