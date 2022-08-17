@@ -27,12 +27,12 @@ router.post("/checkout-cart", async (req, res, next) => {
 
     // 3. Get the current user by userId from mongo
     const userCollection = await bakeryDB().collection("users");
-    const currentUser = await userCollection.findOne({ uid: userId });
+    const currentUser = await userCollection.findOne({ userId });
 
     // 4. Create a new orderId using uuid
     const orderId = uuid();
     const cart = req.body.cart;
-    const today = new Date()
+    const today = new Date();
 
     // 5. Create a new order object with the currentCart(from req.body.cart) and the orderId
     const newOrder = {
@@ -40,7 +40,7 @@ router.post("/checkout-cart", async (req, res, next) => {
       productList: cart,
       createdAt: today,
       lastModified: today,
-      status: "open"
+      status: "open",
     };
 
     // 6. Insert the new order into the orders collection
